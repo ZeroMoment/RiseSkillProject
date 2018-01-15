@@ -7,8 +7,10 @@
     <lzm.cn.riseskillproject.view.SimpleTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="20dp"
         app:text="test-textview"
         app:textSize="14sp"
+        android:background="@color/colorPrimaryDark"
         app:textColor="@color/colorAccent"
         />
 
