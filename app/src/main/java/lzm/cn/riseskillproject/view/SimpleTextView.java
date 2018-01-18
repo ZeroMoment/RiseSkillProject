@@ -2,11 +2,13 @@ package lzm.cn.riseskillproject.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import lzm.cn.riseskillproject.R;
@@ -38,7 +40,7 @@ public class SimpleTextView extends View {
 
         mText = array.getString(R.styleable.SimpleTextView_text);
         mTextColor = array.getColor(R.styleable.SimpleTextView_textColor, mTextColor);
-        mTextSize = array.getDimensionPixelSize(R.styleable.SimpleTextView_textSize, mTextSize);
+        mTextSize = array.getDimensionPixelSize(R.styleable.SimpleTextView_textSize, sp2px(mTextSize));
 
         array.recycle();
 
@@ -47,6 +49,7 @@ public class SimpleTextView extends View {
         mPaint.setTextSize(mTextSize);
         mPaint.setColor(mTextColor);
     }
+
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
@@ -63,23 +66,43 @@ public class SimpleTextView extends View {
         int width = MeasureSpec.getSize(widthMeasureSpec);
 
         //2.给的wrap_content 需要计算
-        if(widthMode == MeasureSpec.AT_MOST) {
+        if (widthMode == MeasureSpec.AT_MOST) {
             //计算的宽度，与字体的长度、字体的大小有关  用画笔来测量
             Rect bounds = new Rect();
             //获取文本的rect
             mPaint.getTextBounds(mText, 0, mText.length(), bounds);
-            width = bounds.width();
+            width = bounds.width() + getPaddingLeft() + getPaddingRight();
 
         }
 
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
-        if(heightMode == MeasureSpec.AT_MOST) {
+        if (heightMode == MeasureSpec.AT_MOST) {
             Rect bounds = new Rect();
             mPaint.getTextBounds(mText, 0, mText.length(), bounds);
-            height = bounds.height();
+            height = bounds.height() + getPaddingTop() + getPaddingBottom();
         }
 
         setMeasuredDimension(width, height);
     }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        //dy 代表的是：高度的一半 到baseline的距离
+        Paint.FontMetricsInt fontMetricsInt = mPaint.getFontMetricsInt();
+        //top 是一个负值 bottom 是一个正值
+        int dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2 - fontMetricsInt.bottom;
+        int baseLine = getHeight() / 2 + dy;
+
+        //x 开始位置 y 基线
+        canvas.drawText(mText, getPaddingLeft(), baseLine, mPaint);
+    }
+
+
+    private int sp2px(int sp) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp,
+                getResources().getDisplayMetrics());
+    }
+
 }
