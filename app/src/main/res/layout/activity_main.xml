@@ -14,4 +14,13 @@
         app:textColor="@color/colorAccent"
         app:textSize="18sp" />
 
+    <lzm.cn.riseskillproject.view.QQStepView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:outerColor="@color/colorPrimary"
+        app:innerColor="@color/colorAccent"
+        app:bordrWidth="6dp"
+        app:stepTextColor="@color/colorAccent"
+        app:stepTextSize="16sp"/>
+
 </LinearLayout>
