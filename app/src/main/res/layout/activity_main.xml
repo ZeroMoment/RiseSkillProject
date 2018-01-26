@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <lzm.cn.riseskillproject.view.SimpleTextView
         android:layout_width="wrap_content"
@@ -15,11 +16,11 @@
         app:textSize="18sp" />
 
     <lzm.cn.riseskillproject.view.QQStepView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:outerColor="@color/colorPrimary"
         app:innerColor="@color/colorAccent"
-        app:bordrWidth="6dp"
+        app:bordrWidth="16dp"
         app:stepTextColor="@color/colorAccent"
         app:stepTextSize="16sp"/>
 

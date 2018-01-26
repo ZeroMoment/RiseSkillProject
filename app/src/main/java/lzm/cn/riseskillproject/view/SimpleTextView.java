@@ -12,6 +12,7 @@ import android.util.TypedValue;
 import android.view.View;
 
 import lzm.cn.riseskillproject.R;
+import lzm.cn.riseskillproject.uitl.GloabalUtils;
 
 /**
  * Created by lzm on 2017/11/5.
@@ -40,7 +41,7 @@ public class SimpleTextView extends View {
 
         mText = array.getString(R.styleable.SimpleTextView_text);
         mTextColor = array.getColor(R.styleable.SimpleTextView_textColor, mTextColor);
-        mTextSize = array.getDimensionPixelSize(R.styleable.SimpleTextView_textSize, sp2px(mTextSize));
+        mTextSize = array.getDimensionPixelSize(R.styleable.SimpleTextView_textSize, GloabalUtils.sp2px(getContext(), mTextSize));
 
         array.recycle();
 
@@ -97,12 +98,6 @@ public class SimpleTextView extends View {
 
         //x 开始位置 y 基线
         canvas.drawText(mText, getPaddingLeft(), baseLine, mPaint);
-    }
-
-
-    private int sp2px(int sp) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp,
-                getResources().getDisplayMetrics());
     }
 
 }

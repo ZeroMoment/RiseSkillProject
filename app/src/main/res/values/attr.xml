@@ -16,6 +16,7 @@
         <attr name="bordrWidth" format="dimension" />
         <attr name="stepTextSize" format="dimension" />
         <attr name="stepTextColor" format="color" />
+        <attr name="stepText" format="string" />
     </declare-styleable>
 
 </resources>
