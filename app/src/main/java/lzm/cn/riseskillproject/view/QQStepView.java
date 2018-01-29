@@ -10,7 +10,6 @@ import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.TextView;
 
 import lzm.cn.riseskillproject.R;
 import lzm.cn.riseskillproject.uitl.GloabalUtils;
@@ -21,7 +20,7 @@ import lzm.cn.riseskillproject.uitl.GloabalUtils;
 
 public class QQStepView extends View {
 
-    private Paint mPaint, mInnerPaint, mTextPaint;
+    private Paint mOuterPaint, mInnerPaint, mTextPaint;
 
     private int mOuterColor = Color.RED;
     private int mInnerColor = Color.BLUE;
@@ -56,12 +55,12 @@ public class QQStepView extends View {
 
         array.recycle();
 
-        mPaint = new Paint();
-        mPaint.setAntiAlias(true);
-        mPaint.setStrokeWidth(mBordWidth);
-        mPaint.setColor(mOuterColor);
-        mPaint.setStrokeCap(Paint.Cap.ROUND); //给画的线家个圆弧帽子，底部两头加了一个圆帽子
-        mPaint.setStyle(Paint.Style.STROKE);
+        mOuterPaint = new Paint();
+        mOuterPaint.setAntiAlias(true);
+        mOuterPaint.setStrokeWidth(mBordWidth);
+        mOuterPaint.setColor(mOuterColor);
+        mOuterPaint.setStrokeCap(Paint.Cap.ROUND); //给画的线家个圆弧帽子，底部两头加了一个圆帽子
+        mOuterPaint.setStyle(Paint.Style.STROKE);
 
         //内圆画笔
         mInnerPaint = new Paint();
@@ -69,7 +68,7 @@ public class QQStepView extends View {
         mInnerPaint.setStrokeWidth(mBordWidth);
         mInnerPaint.setColor(mInnerColor);
         mInnerPaint.setStrokeCap(Paint.Cap.ROUND); //给画的线家个圆弧帽子，底部两头加了一个圆帽子
-        mInnerPaint.setStyle(Paint.Style.FILL);
+        mInnerPaint.setStyle(Paint.Style.STROKE);
 
         mTextPaint = new Paint();
         mTextPaint.setAntiAlias(true);
@@ -103,13 +102,13 @@ public class QQStepView extends View {
 
         //除以2,坐标系问题?
         RectF rectF = new RectF(center-radius, center-radius, getWidth()-mBordWidth/2, getHeight()-mBordWidth/2);
-        canvas.drawArc(rectF, 135, 270, false,mPaint);
+        canvas.drawArc(rectF, 135, 270, false, mOuterPaint);
 
 
         //画内圆
         if(mStepMax == 0) return;
         float sweepAngle = (float) mCurrentStep/mStepMax; //进度扫描的是变化的
-        canvas.drawArc(rectF, 135, sweepAngle*270, false,mPaint);
+        canvas.drawArc(rectF, 135, sweepAngle*270, false,mInnerPaint);
 
         //画文字
         String stepText = mCurrentStep+"";
@@ -120,6 +119,16 @@ public class QQStepView extends View {
         Paint.FontMetricsInt fontMetricsInt = mTextPaint.getFontMetricsInt();
         int dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2;
         int baseLine = getHeight()/2 + dy;
-//        canvas.drawText(stepText, );
+        canvas.drawText(stepText, dx, baseLine, mTextPaint);
+    }
+
+    public void setSetMax(int stepMax) {
+        this.mStepMax = stepMax;
+    }
+
+    public void setCurrentStep(int stepCurrent) {
+        this.mCurrentStep = stepCurrent;
+        //不断绘制
+        invalidate();
     }
 }

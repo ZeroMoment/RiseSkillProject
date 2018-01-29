@@ -16,12 +16,13 @@
         app:textSize="18sp" />
 
     <lzm.cn.riseskillproject.view.QQStepView
+        android:id="@+id/step_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:outerColor="@color/colorPrimary"
         app:innerColor="@color/colorAccent"
         app:bordrWidth="16dp"
         app:stepTextColor="@color/colorAccent"
-        app:stepTextSize="16sp"/>
+        app:stepTextSize="36sp"/>
 
 </LinearLayout>
