@@ -4,6 +4,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Toast;
 
 import lzm.cn.riseskillproject.view.QQStepView;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         //属性动画
         ValueAnimator valueAnimator = ObjectAnimator.ofFloat(0, 3000);
         valueAnimator.setDuration(3000);
+        valueAnimator.setInterpolator(new DecelerateInterpolator()); //降速
         valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {

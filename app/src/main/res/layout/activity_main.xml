@@ -17,8 +17,9 @@
 
     <lzm.cn.riseskillproject.view.QQStepView
         android:id="@+id/step_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
         app:outerColor="@color/colorPrimary"
         app:innerColor="@color/colorAccent"
         app:bordrWidth="16dp"
