@@ -8,13 +8,13 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.view.View;
 
 import lzm.cn.riseskillproject.R;
 import lzm.cn.riseskillproject.uitl.GloabalUtils;
 
 /**
+ * 画一个简单的textview
  * Created by lzm on 2017/11/5.
  */
 

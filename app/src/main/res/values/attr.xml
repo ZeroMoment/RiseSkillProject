@@ -2,12 +2,10 @@
 <resources>
 
     <declare-styleable name="SimpleTextView">
-
         <attr name="text" format="string" />
         <attr name="textColor" format="color" />
         <attr name="textSize" format="dimension" />
         <attr name="maxLength" format="integer" />
-
     </declare-styleable>
 
     <declare-styleable name="QQStepView">
@@ -17,6 +15,11 @@
         <attr name="stepTextSize" format="dimension" />
         <attr name="stepTextColor" format="color" />
         <attr name="stepText" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="ColorTrackTextview">
+        <attr name="originColor" format="color" />
+        <attr name="changeColor" format="color" />
     </declare-styleable>
 
 </resources>

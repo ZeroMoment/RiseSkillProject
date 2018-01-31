@@ -15,6 +15,7 @@ import lzm.cn.riseskillproject.R;
 import lzm.cn.riseskillproject.uitl.GloabalUtils;
 
 /**
+ * 计步器进度条
  * Created by lizhiming on 2018/1/24.
  */
 
@@ -89,36 +90,35 @@ public class QQStepView extends View {
         int height = MeasureSpec.getSize(heightMeasureSpec);
 
 
-
-        setMeasuredDimension(width>height? height : width, width>height? height : width);
+        setMeasuredDimension(width > height ? height : width, width > height ? height : width);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        int center = getWidth()/2;
-        int radius = getWidth()/2-mBordWidth/2;
+        int center = getWidth() / 2;
+        int radius = getWidth() / 2 - mBordWidth / 2;
 
         //除以2,坐标系问题?
-        RectF rectF = new RectF(center-radius, center-radius, getWidth()-mBordWidth/2, getHeight()-mBordWidth/2);
+        RectF rectF = new RectF(center - radius, center - radius, getWidth() - mBordWidth / 2, getHeight() - mBordWidth / 2);
         canvas.drawArc(rectF, 135, 270, false, mOuterPaint);
 
 
         //画内圆
-        if(mStepMax == 0) return;
-        float sweepAngle = (float) mCurrentStep/mStepMax; //进度扫描的是变化的
-        canvas.drawArc(rectF, 135, sweepAngle*270, false,mInnerPaint);
+        if (mStepMax == 0) return;
+        float sweepAngle = (float) mCurrentStep / mStepMax; //进度扫描的是变化的
+        canvas.drawArc(rectF, 135, sweepAngle * 270, false, mInnerPaint);
 
         //画文字
-        String stepText = mCurrentStep+"";
+        String stepText = mCurrentStep + "";
         Rect textBounds = new Rect();
         mTextPaint.getTextBounds(stepText, 0, stepText.length(), textBounds);
-        int dx = getWidth()/2 - textBounds.width()/2;
+        int dx = getWidth() / 2 - textBounds.width() / 2;
         //text的基线
         Paint.FontMetricsInt fontMetricsInt = mTextPaint.getFontMetricsInt();
         int dy = (fontMetricsInt.bottom - fontMetricsInt.top) / 2;
-        int baseLine = getHeight()/2 + dy;
+        int baseLine = getHeight() / 2 + dy;
         canvas.drawText(stepText, dx, baseLine, mTextPaint);
     }
 
