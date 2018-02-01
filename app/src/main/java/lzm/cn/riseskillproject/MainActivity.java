@@ -75,6 +75,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
+                //1.左边位置 position
+                ColorTrackTextview left = mIndicators.get(position);
+                left.setDirection(ColorTrackTextview.Direction.RIGHT_TO_LEFT);
+                left.setCurrentProgress(1-positionOffset);
+
+                try {
+                    ColorTrackTextview right = mIndicators.get(position + 1);
+                    right.setDirection(ColorTrackTextview.Direction.LEFT_TO_RIGHT);
+                    right.setCurrentProgress(positionOffset);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
