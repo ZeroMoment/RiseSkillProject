@@ -3,7 +3,6 @@ package lzm.cn.riseskillproject;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
@@ -14,13 +13,12 @@ import lzm.cn.riseskillproject.view.QQStepView;
  * Created by lizhiming on 2018/1/31.
  */
 
-public class SimpleCustomeViewActivity extends AppCompatActivity {
+public class SimpleCustomeViewActivity extends BaseActivity {
 
     private ColorTrackTextview mColorTrackTextview;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void initView(Bundle bundle) {
         setContentView(R.layout.activity_simple_customview);
 
         mColorTrackTextview = (ColorTrackTextview) findViewById(R.id.color_track_textview);
@@ -40,6 +38,11 @@ public class SimpleCustomeViewActivity extends AppCompatActivity {
             }
         });
         valueAnimator.start();
+    }
+
+    @Override
+    protected String getPageTitle() {
+        return "junior study";
     }
 
     public void leftToRight(View v) {
