@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initIndicator() {
 
-        for (int i=0; i<items.length; i++) {
+        for (int i = 0; i < items.length; i++) {
             //动态添加颜色跟踪的Textview
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -74,11 +74,10 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
                 //1.左边位置 position
                 ColorTrackTextview left = mIndicators.get(position);
                 left.setDirection(ColorTrackTextview.Direction.RIGHT_TO_LEFT);
-                left.setCurrentProgress(1-positionOffset);
+                left.setCurrentProgress(1 - positionOffset);
 
                 try {
                     ColorTrackTextview right = mIndicators.get(position + 1);
