@@ -137,6 +137,8 @@ public class MainActivity extends AppCompatActivity implements MainLeftMenuAdapt
             return;
         }
 
+        mDrawerLayout.closeDrawer(Gravity.LEFT);
+
         Intent startIntent = null;
         String key = menuListData.get(poisition);
         if ("junior study".equals(key)) {

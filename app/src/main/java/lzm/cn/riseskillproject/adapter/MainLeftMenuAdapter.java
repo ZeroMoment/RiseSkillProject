@@ -34,7 +34,7 @@ public class MainLeftMenuAdapter extends RecyclerView.Adapter {
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.item_main_menu, null);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_main_menu, parent, false);
         MyViewHolder holder  = new MyViewHolder(view);
         return holder;
     }
