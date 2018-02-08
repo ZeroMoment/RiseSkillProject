@@ -15,11 +15,15 @@ import lzm.cn.riseskillproject.view.QQStepView;
 
 public class SimpleCustomeViewActivity extends BaseActivity {
 
+    private String mTitle;
+
     private ColorTrackTextview mColorTrackTextview;
 
     @Override
     protected void initView(Bundle bundle) {
         setContentView(R.layout.activity_simple_customview);
+
+        mTitle = getIntent().getExtras().getString("title");
 
         mColorTrackTextview = (ColorTrackTextview) findViewById(R.id.color_track_textview);
 
@@ -42,7 +46,7 @@ public class SimpleCustomeViewActivity extends BaseActivity {
 
     @Override
     protected String getPageTitle() {
-        return "junior study";
+        return mTitle;
     }
 
     public void leftToRight(View v) {

@@ -143,9 +143,12 @@ public class MainActivity extends AppCompatActivity implements MainLeftMenuAdapt
         String key = menuListData.get(poisition);
         if ("junior study".equals(key)) {
             startIntent = new Intent(this, SimpleCustomeViewActivity.class);
+            startIntent.putExtra("title", "junior study");
             startActivity(startIntent);
         } else if ("junior training".equals(key)) {
-
+            startIntent = new Intent(this, JuniorTrainingActivity.class);
+            startIntent.putExtra("title", "junior training");
+            startActivity(startIntent);
         }
     }
 
