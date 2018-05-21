@@ -2,6 +2,7 @@ package lzm.cn.riseskillproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.ParcelUuid;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -141,16 +142,25 @@ public class MainActivity extends AppCompatActivity implements MainLeftMenuAdapt
 
         Intent startIntent = null;
         String key = menuListData.get(poisition);
-        if ("junior study".equals(key)) {
+        if (JUNIOR_STUDY.equals(key)) {
             startIntent = new Intent(this, SimpleCustomeViewActivity.class);
-            startIntent.putExtra("title", "junior study");
+            startIntent.putExtra(PAGE_TITLE, JUNIOR_STUDY);
             startActivity(startIntent);
-        } else if ("junior training".equals(key)) {
+        } else if (JUNIOR_TRAINING.equals(key)) {
             startIntent = new Intent(this, JuniorTrainingActivity.class);
-            startIntent.putExtra("title", "junior training");
+            startIntent.putExtra(PAGE_TITLE, JUNIOR_TRAINING);
+            startActivity(startIntent);
+        } else if(KOTLIN_STUDY.equals(key)) {
+            startIntent = new Intent(this, KotlinStudyActivity.class);
+            startIntent.putExtra(PAGE_TITLE, KOTLIN_STUDY);
             startActivity(startIntent);
         }
     }
+
+    public static final String PAGE_TITLE = "page_titile";
+    private final String JUNIOR_STUDY = "junior study";
+    private final String JUNIOR_TRAINING = "junior training";
+    private final String KOTLIN_STUDY = "kotlin study";
 
     /**
      * 获取左侧菜单数据
@@ -160,8 +170,9 @@ public class MainActivity extends AppCompatActivity implements MainLeftMenuAdapt
     private List<String> getCustomMenus() {
 
         List<String> menuList = new ArrayList<>();
-        menuList.add("junior study");
-        menuList.add("junior training");
+        menuList.add(JUNIOR_STUDY);
+        menuList.add(JUNIOR_TRAINING);
+        menuList.add(KOTLIN_STUDY);
 
         return menuList;
     }

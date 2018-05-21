@@ -7,6 +7,8 @@ import android.view.animation.DecelerateInterpolator;
 
 import lzm.cn.riseskillproject.view.TrainingProgressView;
 
+import static lzm.cn.riseskillproject.MainActivity.PAGE_TITLE;
+
 /**
  * Created by lizhiming on 2018/2/6.
  */
@@ -19,7 +21,7 @@ public class JuniorTrainingActivity extends BaseActivity {
     protected void initView(Bundle bundle) {
         setContentView(R.layout.activity_training_junior_view);
 
-        mTitle = getIntent().getExtras().getString("title");
+        mTitle = getIntent().getExtras().getString(PAGE_TITLE);
 
         final TrainingProgressView stepView = (TrainingProgressView) findViewById(R.id.training_progress_view);
         stepView.setSetMax(4000);

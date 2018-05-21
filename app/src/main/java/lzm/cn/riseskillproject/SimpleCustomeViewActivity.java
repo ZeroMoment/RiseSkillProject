@@ -9,6 +9,8 @@ import android.view.animation.DecelerateInterpolator;
 import lzm.cn.riseskillproject.view.ColorTrackTextview;
 import lzm.cn.riseskillproject.view.QQStepView;
 
+import static lzm.cn.riseskillproject.MainActivity.PAGE_TITLE;
+
 /**
  * Created by lizhiming on 2018/1/31.
  */
@@ -23,7 +25,7 @@ public class SimpleCustomeViewActivity extends BaseActivity {
     protected void initView(Bundle bundle) {
         setContentView(R.layout.activity_simple_customview);
 
-        mTitle = getIntent().getExtras().getString("title");
+        mTitle = getIntent().getExtras().getString(PAGE_TITLE);
 
         mColorTrackTextview = (ColorTrackTextview) findViewById(R.id.color_track_textview);
 

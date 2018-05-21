@@ -19,6 +19,7 @@
 
         <activity android:name=".SimpleCustomeViewActivity" />
         <activity android:name=".JuniorTrainingActivity" />
+        <activity android:name=".KotlinStudyActivity" />
 
     </application>
 
